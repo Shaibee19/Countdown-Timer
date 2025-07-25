@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <span id="app__title">Countdown Timer</span>
+      </div>
+      <div class="date__display">
+        <div class="day" id="currentDay">Friday</div>
+        <div class="full__date" id="currentDate">07/25/2025</div>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="sidebar">
+        <div class="profile">
+          <div class="profile__img">⏱️</div>
+          <div class="profile__name" id="profileName">ShyB</div>
+          <div class="profile__email" id="profileEmail">ladedah@muse.com</div>
+        </div>
+        <div class="sidebar__buttons">
+          <button class="sidebar__button" data-selection="section1">
+            📋 Task List
+          </button>
+          <button class="sidebar__button" data-selection="section2">
+            📈 Digital Vision Board
+          </button>
+          <button class="sidebar__button" data-selection="section3">
+            🧮 Macro Calculator
+          </button>
+          <button class="sidebar__button" data-selection="section4">
+            💪 Workout/Meal Planner
+          </button>
+          <button class="sidebar__button" data-selection="section5">
+            💰 Monthly Tracker
+          </button>
+          <button class="sidebar__button" data-selection="section6">
+            💫 Mood Tracker
+          </button>
+          <button class="sidebar__button" data-selection="section7">
+            🕘 Countdown Timer
+          </button>
+        </div>
+      </div>
+
+      <div class="main__content">
+        <div class="countdown__wrapper">
+          <div class="countdown__intro">
+            <span class="countdown__intro--icon"></span>
+            <h1 class="countdown__intro--title">Countdown Timer</h1>
+            <p class="countdown__intro--text">
+              Track you important events with countdown timers.
+            </p>
+            <p class="countdown__intro--text">
+              Use the menu on the right to add a new timer!
+            </p>
+          </div>
+
+          <form action="" class="countdown__form" id="countdownForm">
+            <div class="countdown__form--header">
+              <h2 class="countdown__form--title">Add a new timer</h2>
+              <div class="countdown__form--toggle">
+                <label for="modeCheckbox" class="countdown__form--checkboxLabel"
+                  >Pomodoro mode</label
+                >
+                <input
+                  type="checkbox"
+                  class="countdown__form--checkbox"
+                  id="modeCheckbox"
+                />
+              </div>
+            </div>
+            <div class="countdown__name">
+              <label for="timerName" class="countdown__form--nameLabel"
+                >Timer Name</label
+              >
+              <input
+                type="text"
+                class="countdown__form--input"
+                id="timerName"
+                placeholder="Enter timer name"
+              />
+            </div>
+            <!-- VISIBLE IF POMODORO IS ON -->
+            <div class="countdown__pomodoro--setting">
+              <label for="breakDuration" class="countdown__pomodoro--label"
+                >Break Duration (minutes)</label
+              >
+              <div class="">
+                <button
+                  type="button"
+                  class="countdown__time--button countdown__time--buttonDecrement"
+                  id="breakDurationDecrement"
+                >
+                  -
+                </button>
+                <input
+                  type="number"
+                  class="countdown__pomodoro--input"
+                  id="breakDuration"
+                  value="5"
+                  min="1"
+                  max="60"
+                  step="1"
+                />
+                <!-- button type is so that the form isn't submitted -->
+                <button
+                  type="button"
+                  class="countdown__time--button countdown__time--buttonIncrement"
+                  id="breakDurationIncrement"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+            <!-- VISIBLE IF POMODORO IS OFF -->
+            <div class="countdown__timer--typeGroup">
+              <div class="countdown__timer--typeOption">
+                <label for="radioCountdown" class="countdown__form--label"
+                  >Countdown</label
+                >
+                <input
+                  type="radio"
+                  class="countdown__form--radio"
+                  id="radioCountdown"
+                  name="timerType"
+                  checked
+                />
+              </div>
+              <div class="countdown__timer--typeOption">
+                <label for="radioDateCountdown" class="countdown__form--label"
+                  >Countdown to date and time</label
+                >
+                <input
+                  type="radio"
+                  class="countdown__form--radio"
+                  id="radioDateCountdown"
+                  name="timerType"
+                />
+              </div>
+            </div>
+            <!-- VISIBLE IF COUNTDOWN IS SELECTED -->
+            <div class="countdown__time--settings">
+              <div class="countdown__time--setting">
+                <button
+                  type="button"
+                  class="countdown__time--button countdown__time--buttonIncrement"
+                  id="daysIncrement"
+                >
+                  +
+                </button>
+                <div class="countdown__time--inputGroup">
+                  <label for="days" class="countdown__time--label">Days:</label>
+                  <input
+                    type="number"
+                    class="countdown__time--input"
+                    id="days"
+                    value="0"
+                    min="0"
+                    max="30"
+                    step="1"
+                  />
+                </div>
+                <button
+                  type="button"
+                  class="countdown__time--button countdown__time--buttonDecrement"
+                  id="daysDecrement"
+                >
+                  -
+                </button>
+              </div>
+              <span class="countdown__time--separator"></span>
+              <div class="countdown__time--setting">
+                <button
+                  type="button"
+                  class="countdown__time--button countdown__time--buttonIncrement"
+                  id="hoursIncrement"
+                >
+                  +
+                </button>
+                <div class="countdown__time--inputGroup">
+                  <label for="hours" class="countdown__time--label"
+                    >Hours:</label
+                  >
+                  <input
+                    type="number"
+                    class="countdown__time--input"
+                    id="hours"
+                    value="0"
+                    min="0"
+                    max="23"
+                    step="1"
+                  />
+                </div>
+                <button
+                  type="button"
+                  class="countdown__time--button countdown__time--buttonDecrement"
+                  id="hoursDecrement"
+                >
+                  -
+                </button>
+              </div>
+              <span class="countdown__time--separator"></span>
+              <div class="countdown__time--setting">
+                <button
+                  type="button"
+                  class="countdown__time--button countdown__time--buttonIncrement"
+                  id="minutesIncrement"
+                >
+                  +
+                </button>
+                <div class="countdown__time--inputGroup">
+                  <label for="minutes" class="countdown__time--label"
+                    >Minutes:</label
+                  >
+                  <input
+                    type="number"
+                    class="countdown__time--input"
+                    id="minutes"
+                    value="0"
+                    min="0"
+                    max="59"
+                    step="1"
+                  />
+                </div>
+                <button
+                  type="button"
+                  class="countdown__time--button countdown__time--buttonDecrement"
+                  id="minutesDecrement"
+                >
+                  -
+                </button>
+              </div>
+              <span class="countdown__time--separator"></span>
+              <div class="countdown__time--setting">
+                <button
+                  type="button"
+                  class="countdown__time--button countdown__time--buttonIncrement"
+                  id="secondsIncrement"
+                >
+                  +
+                </button>
+                <div class="countdown__time--inputGroup">
+                  <label for="seconds" class="countdown__time--label"
+                    >Seconds:</label
+                  >
+                  <input
+                    type="number"
+                    class="countdown__time--input"
+                    id="seconds"
+                    value="0"
+                    min="0"
+                    max="59"
+                    step="1"
+                  />
+                </div>
+                <button
+                  type="button"
+                  class="countdown__time--button countdown__time--buttonDecrement"
+                  id="secondsDecrement"
+                >
+                  -
+                </button>
+              </div>
+            </div>
+            <!-- VISIBLE IF COUNTDOWN FROM DATE AND TIME IS SELECTED -->
+            <div class="countdown__date--settings">
+              <div class="countdown__date--setting">
+                <label for="date" class="countdown__date--label">Date</label>
+                <input type="date" class="countdown__date--input" id="date" />
+              </div>
+              <div class="countdown__datetime--setting">
+                <label for="dateTime" class="countdown__datetime--label"
+                  >Time</label
+                >
+                <input
+                  type="time"
+                  class="countdown__datetime--input"
+                  id="dateTime"
+                />
+              </div>
+            </div>
+            <button class="countdown__button" id="addTimer" type="submit">
+              Add timer
+            </button>
+            <!-- VISIBLE IF ERROR OCCURS -->
+            <p class="error__message">Example Error</p>
+          </form>
+        </div>
+
+        <div class="countdown__timers">
+            <h2 class="countdown__timers--title">Active Timers</h2>
+            <ul class="countdown__timers--list" id="timersList">
+                <!-- TIMERS WILL DYNAMICALLY ADD HERE -->
+                 <li class="noTimer__message">No active timers yet.</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="./script.js" defer></script>
+  </body>
+</html>
