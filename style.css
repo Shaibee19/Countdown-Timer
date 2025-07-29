@@ -1,0 +1,633 @@
+@import url("https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap");
+
+/* BASIC RESET AND FONTS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gabarito", sans-serif; /* Using Gabarito as the primary font */
+}
+
+body,
+html {
+  height: 100%;
+  overflow: hidden; /* Prevent overall page scrolling */
+}
+
+body {
+  background-color: rgb(25, 25, 25); /* Dark background for the main page */
+  color: white; /* Default text color for the main layout */
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between; /* Space between logo and date display */
+  align-items: center;
+  padding: 15px 20px;
+  background-color: rgb(4, 9, 29); /* Dark blue header background */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  color: white; /* Ensure header text is white */
+}
+
+header .logo {
+  /* Target logo specifically in the main header */
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+header .logo img {
+  /* Target logo image specifically in the main header */
+  height: 32px;
+  margin-right: 10px;
+}
+
+#app__title {
+  /* Ensure main app title is white */
+  color: white;
+}
+
+.date__display {
+  text-align: right;
+}
+
+.day {
+  font-weight: bold;
+}
+
+.full__date,
+#currentDate {
+  color: rgb(89, 82, 209); /* Accent color for date */
+}
+
+/* MAIN LAYOUT */
+.container {
+  display: flex;
+  height: calc(100vh - 67px); /* Subtract header height (approx 67px) */
+  overflow: hidden; /* Prevent container content from overflowing */
+}
+
+/* SIDEBAR PROFILE */
+.sidebar {
+  width: 250px;
+  min-width: 250px; /* Fixed width */
+  background: rgb(4, 9, 29); /* Dark blue sidebar background */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); /* Shadow on the right */
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile__img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  border: 3px solid rgb(138, 43, 226);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  background-color: rgb(35, 35, 35);
+}
+
+.profile__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile__name {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: white; /* Ensure profile name is white */
+}
+
+.profile__email {
+  font-size: 12px;
+  opacity: 0.8;
+  color: #bbb; /* Lighter color for email */
+}
+
+.sidebar__button {
+  background-color: transparent; /* Default transparent background */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  width: 100%;
+  text-align: left;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar__button:hover {
+  background-color: rgba(89, 82, 209, 0.2); /* Subtle hover effect */
+}
+
+.sidebar__button.active {
+  background-color: rgb(89, 82, 209); /* Active button accent color */
+}
+
+/* MAIN CONTENT */
+.main__content {
+  padding: 30px;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start; /* no matter what they start from the top */
+  overflow-y: auto; /* no matter what we're going to be able to scroll up and down */
+}
+
+.countdown__wrapper {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.countdown__intro,
+.countdown__form {
+  width: 50%;
+  text-align: center;
+  background-color: #2a2a2a;
+  padding: 20px;
+  border: 1px solid #444;
+  border-radius: 12px;
+}
+
+.countdown__intro--icon {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.countdown__intro--title {
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+.countdown__intro--text {
+  font-size: 32px;
+  color: #bbb;
+  margin-bottom: 16px;
+}
+
+.countdown__form--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.countdown__form--title {
+  font-size: 24px;
+}
+
+.countdown__form--toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.countdown__form--checkboxLabel {
+  font-size: 14px;
+  color: #bbb;
+  cursor: pointer;
+}
+
+.countdown__form--checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  appearance: none; /* to get rid of the original HTML styling that is defaulted into checkboxes */
+  background-color: #c82333;
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.3 ease;
+}
+
+.countdown__form--checkbox:checked {
+  background-color: #28a745;
+}
+
+.countdown__name {
+  margin-bottom: 16px;
+}
+
+.countdown__form--nameLabel {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 20px;
+  color: #bbb;
+}
+
+.countdown__form--input {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  padding: 12px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background-color: #2a2a2a;
+  color: white;
+  font-size: 14px;
+  transition: all 0.3 ease;
+}
+
+.countdown__form--input:focus {
+  border-color: #6a28a7;
+  outline: none; /* by default HTML gives it an outline when clicked on */
+  box-shadow: 0 0 0 2px rgba(106, 40, 167, 0.3);
+}
+
+.countdown__timer--typeGroup {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  justify-content: center;
+}
+
+.countdown__timer--typeOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.countdown__form--label {
+  cursor: pointer;
+}
+
+.countdown__form--radio {
+  width: 16px;
+  height: 16px;
+  appearance: none;
+  background-color: #c82333;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3 ease;
+}
+
+.countdown__form--radio:checked {
+  background-color: #28a745;
+}
+
+.countdown__time--settings {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.countdown__time--setting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.countdown__time--label {
+  font-size: 14px;
+  color: #bbb;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.countdown__time--separator {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.countdown__time--input {
+  width: 60px;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background-color: #444;
+  color: white;
+  font-size: 14px;
+  transition: all 0.3 ease;
+}
+
+.countdown__time--input::-webkit-inner-spin-button,
+.countdown__pomodoro--input::-webkit-inner-spin-button {
+  /* psuedo effect = will see in JavaScript video */
+  appearance: none;
+  margin: 0;
+}
+
+.countdown__time--input:focus {
+  border-color: #6a28a7;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(106, 40, 167, 0.3);
+}
+
+.countdown__time--button {
+  color: white;
+  border: none;
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3 ease;
+}
+
+.countdown__time--buttonDecrement {
+  margin-top: 4px;
+  background-color: #c82333;
+}
+
+.countdown__time--buttonDecrement:hover {
+  background-color: #a71d2b;
+}
+
+.countdown__time--buttonIncrement {
+  background-color: #28a745;
+}
+
+.countdown__time--buttonIncrement:hover {
+  background-color: #218838;
+}
+
+.countdown__button {
+  background-color: #8a2be2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3 ease;
+}
+
+.countdown__button:hover {
+  background-color: #6a28a7;
+}
+
+.error__message {
+  color: #c82333;
+  font-size: 14px;
+  margin-top: 8px;
+  /* display: none; */
+}
+
+.countdown__date--settings {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 48px;
+  /* display: none; */
+}
+
+.countdown__date--label,
+.countdown__datetime--label {
+  font-size: 14px;
+  color: #bbb;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.countdown__date--input,
+.countdown__datetime--input {
+  width: 200px;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background-color: #2a2a2a;
+  color: white;
+  font-size: 14px;
+  transition: all 0.3 ease;
+}
+
+.countdown__date--input:focus,
+.countdown__datetime--input:focus {
+  border-color: #6a28a7;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(106, 40, 167, 0.3);
+}
+
+.countdown__date--input::-webkit-calendar-picker-indicator,
+.countdown__datetime--input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* This is not even in the HTML */
+.countdown__pomodoro--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.countdown__pomodoro--setting {
+  margin-bottom: 32px;
+  /* display: none; */
+}
+
+.countdown__pomodoro--label {
+  font-size: 14px;
+  color: #bbb;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.countdown__pomodoro--input {
+  width: 90px;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background-color: #2a2a2a;
+  color: white;
+  font-size: 14px;
+  transition: all 0.3 ease;
+  margin: 0 8px;
+}
+
+.countdown__pomodoro--input:focus {
+  border-color: #6a28a7;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(106, 40, 167, 0.3);
+}
+
+.countdown__timers {
+  background-color: #2a2a2a;
+  padding: 20px;
+  border: 1px solid #444;
+  border-radius: 12px;
+}
+
+.countdown__timers--title {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.countdown__timers--list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.noTimer__message {
+  color: #bbb;
+  font-size: 16px; /* when you don't set it - it will go off of user defaults */
+  text-align: center;
+  margin-top: 16px;
+}
+
+.countdown__timer--item {
+  display: flex; /* needs to be wrapped with the container with display: flex; for the elements to work */
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background-color: #444;
+  border-radius: 8px;
+  color: white;
+}
+
+.countdown__timer {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.countdown__timer--controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.countdown__timer--buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.countdown__timer--tag {
+  background-color: #28a745;
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: 14px;
+}
+
+.countdown__timer--time {
+  color: #28a745;
+  font-size: 48px;
+}
+
+.timer--ended {
+  color: #c82333;
+}
+
+.timer--break {
+  color: #ffc107;
+}
+
+.countdown__timer--name {
+  font-size: 24px;
+}
+
+.countdown__timer--button {
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3 ease;
+}
+
+.countdown__timer--buttonStart {
+  background-color: #28a745;
+}
+
+.countdown__timer--buttonStart:hover {
+  background-color: #218838;
+}
+
+.countdown__timer--buttonStop {
+  background-color: #c82333;
+}
+
+.countdown__timer--buttonStop:hover {
+  background-color: #a71d2b;
+}
+
+.countdown__timer--buttonReset {
+  background-color: #6a28a7;
+}
+
+.countdown__timer--buttonReset:hover {
+  background-color: #5a1f8c;
+}
+
+.countdown__timer--buttonNext {
+  background-color: #ffc107;
+}
+
+.countdown__timer--buttonNext:hover {
+  background-color: #e0a800;
+}
+
+.countdown__timer--buttonDelete {
+  background-color: #dc3545;
+}
+
+.countdown__timer--buttonDelete:hover {
+  background-color: #c82333;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 1400px) {
+  .countdown__timer--item {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+    .countdown__date--settings {
+      display: flex;
+      flex-direction: column;
+    }
+}
+
+@media (max-width: 1024px) {
+  .countdown__form--header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .countdown__timer {
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+
+  .countdown__timer--controls {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 900px) {
+  .countdown__wrapper {
+    flex-direction: column;
+  }
+
+  .countdown__intro,
+  .countdown__form {
+    width: 100%;
+  }
+}
