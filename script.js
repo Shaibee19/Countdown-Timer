@@ -50,9 +50,9 @@ const dateTimeInput = document.getElementById("dateTime");
 const addTimerButton = document.getElementById("addTimer");
 
 const countdownDateSettingsDiv = document.querySelector(".countdown__date--settings");
-const countdownTimeSettinsDiv = document.querySelector(".countdown__time--settings");
+const countdownTimeSettingsDiv = document.querySelector(".countdown__time--settings");
 const countdownTimerTypeGroup = document.querySelector(".countdown__timer--typeGroup");
-const countdownPomodoroSettingDiv = document.querySelector(".countdown__pomodoro--setting");
+const countdownPomodoroSettingsDiv = document.querySelector(".countdown__pomodoro--setting");
 const errorMessageElement = document.querySelector(".error__message");
 const countdownTimersList = document.querySelector(".countdown__timers--list");
 
@@ -70,7 +70,7 @@ if (localStorage.getItem("timers")) {
       // stop the timer if it was running when the page closed
       timer.started = false;
     } else {
-      // for countdown date timers, ensure the countdownDate is converted
+      // for countdown date timers, ensure the countdownDate is converted to a Date object from string
       timer.countdownDate = new Date(timer.countdownDate);
       // calculate time left based on the countdown date
       timer.timeLeft = Math.floor((timer.countdownDate = Date.now()) / 100);
@@ -369,11 +369,11 @@ radioDateCountdownButton.addEventListener("change", () => {
 modeCheckbox.addEventListener("change", () => {
     if (modeCheckbox.checked) {
         countdownTimerTypeGroup.style.display = "none";
-        countdownPomodoroSettingDiv.style.display = "block";
+        countdownPomodoroSettingsDiv.style.display = "block";
         radioCountdownButton.click();
     } else {
         countdownTimerTypeGroup.style.display = "flex";
-        countdownPomodoroSettingDiv.style.display = "none";
+        countdownPomodoroSettingsDiv.style.display = "none";
     }
 });
 

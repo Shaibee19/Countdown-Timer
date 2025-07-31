@@ -381,7 +381,7 @@ header .logo img {
   color: #c82333;
   font-size: 14px;
   margin-top: 8px;
-  /* display: none; */
+  display: none;
 }
 
 .countdown__date--settings {
@@ -389,7 +389,7 @@ header .logo img {
   gap: 16px;
   justify-content: center;
   margin-bottom: 48px;
-  /* display: none; */
+  display: none;
 }
 
 .countdown__date--label,
@@ -435,7 +435,7 @@ header .logo img {
 
 .countdown__pomodoro--setting {
   margin-bottom: 32px;
-  /* display: none; */
+  display: none;
 }
 
 .countdown__pomodoro--label {
